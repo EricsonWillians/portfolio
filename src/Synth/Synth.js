@@ -60,10 +60,11 @@ export default class Synth extends Component {
             <div className="synth">
                 <div className="synth__natural__notes">
                     {naturalNotes}
+                    <div className="synth__sharp__notes">
+                        {sharpNotes}
+                    </div>
                 </div>
-                <div className="synth__sharp__notes">
-                    {sharpNotes}
-                </div>
+
             </div>
         )
     }
