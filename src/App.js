@@ -17,7 +17,7 @@ export default function App() {
     <ThemeProvider theme={themes.default}>
       <AppBar>
         <Toolbar style={{ justifyContent: "space-evenly" }}>
-          <KnobWrapper title="Duration" onChange={(value) => {
+          <KnobWrapper title="Reverb" onChange={(value) => {
             setDuration(value);
           }}/>
         </Toolbar>
