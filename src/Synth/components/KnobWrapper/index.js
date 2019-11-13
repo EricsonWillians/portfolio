@@ -8,7 +8,7 @@ export default function KnobWrapper({ title }) {
     <div className="knob-wrapper">
       <Knob onChange={(_value) => {
           setValue(_value);
-      }} min={0} max={3} value={value} />
+      }} min={0} max={5} value={value} />
       <p>{title} {value}</p>
     </div>
   );
