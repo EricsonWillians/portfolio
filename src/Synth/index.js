@@ -39,7 +39,7 @@ export default function Synth({ duration }) {
   const [oscillator, setOscillator] = useState(
     new Tone.PolySynth(16, Tone.Synth, {
       oscillator: {
-        type: "triangle"
+        type: "square"
       }
     }).toMaster()
   );
@@ -58,7 +58,7 @@ export default function Synth({ duration }) {
         })}
         <div className={styles.synthSharpNotes}>
           {sharpNotes.map(note => {
-            return (
+            return (  
               <SharpNote
                 note={note}
                 duration={duration}

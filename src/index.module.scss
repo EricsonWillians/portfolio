@@ -133,7 +133,7 @@ html {
 }
 body {
   min-height: 100%;
-  background: #000000;
+  background: #00807F;
 }
 
 .main {
@@ -141,7 +141,7 @@ body {
   justify-content: center;
 }
 
-.main-container {
+.mainContainer {
   width: 1024px;
   height: 512px;
   padding: 64px;
@@ -152,14 +152,17 @@ body {
   justify-content: center;
 }
 
-.sound-trigger {
+.soundTrigger {
   width: 256px;
   height: 128px;
   background: red;
   cursor: pointer;
 }
 
-.app-title {
+.appTitle {
   font-size: 32px;
 }
 
+.avatar {
+  width: 200px;
+}

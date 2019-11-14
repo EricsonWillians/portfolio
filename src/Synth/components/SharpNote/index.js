@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./index.module.scss";
+import { Cutout } from "react95";
 import { keyTable } from './../../keyTable';
 
 export default function SharpNote({ note, duration, oscillator }) {
