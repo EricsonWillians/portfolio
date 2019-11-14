@@ -1,0 +1,11 @@
+.synthNaturalNote {
+  width: 64px;
+  height: 384px;
+  background: white;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.synthNoteTriggered {
+  background: red;
+}

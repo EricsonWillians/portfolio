@@ -1,0 +1,19 @@
+.synth {
+  width: 1256px;
+  height: 384px;
+  background: black;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.synthNaturalNotes,
+.synthSharpNotes {
+  display: flex;
+  justify-content: center;
+}
+
+.synthSharpNotes {
+  position: absolute;
+  margin-left: 15px;
+}

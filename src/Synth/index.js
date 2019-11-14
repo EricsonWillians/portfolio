@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Tone from "tone";
-import "./index.scss";
-import { keyTable } from "./keyTable";
+import styles from "./index.module.scss";
+import NaturalNote from "./components/NaturalNote";
+import SharpNote from "./components/SharpNote";
 
 export default function Synth({ duration }) {
   const [naturalNotes, setNaturalNotes] = useState([
@@ -44,8 +45,8 @@ export default function Synth({ duration }) {
   );
 
   return (
-    <div className="synth">
-      <div className="synth__natural__notes">
+    <div className={styles.synth}>
+      <div className={styles.synthNaturalNotes}>
         {naturalNotes.map(note => {
           return (
             <NaturalNote
@@ -55,7 +56,7 @@ export default function Synth({ duration }) {
             />
           );
         })}
-        <div className="synth__sharp__notes">
+        <div className={styles.synthSharpNotes}>
           {sharpNotes.map(note => {
             return (
               <SharpNote
@@ -68,105 +69,5 @@ export default function Synth({ duration }) {
         </div>
       </div>
     </div>
-  );
-}
-
-export function NaturalNote({ note, duration, oscillator }) {
-  const [triggered, setTriggered] = useState(false);
-  useEffect(() => {
-    document.addEventListener(
-      "keydown",
-      event => {
-        if (triggered === false) {
-          if (event.keyCode === keyTable[note]) {
-            setTriggered(true);
-          }
-        }
-      },
-      false
-    );
-    document.addEventListener("keyup", event => {
-      if (event.keyCode === keyTable[note]) {
-        setTriggered(false);
-      }
-    });
-  }, []);
-
-  if (triggered) {
-    oscillator.triggerAttack(note);
-  } else if (triggered === false) {
-    oscillator.triggerRelease(note);
-  }
-
-  return (
-    <div
-      className={`synth__natural__note ${(() => {
-        if (triggered) {
-          return "synth__note--triggered";
-        }
-        return "";
-      })()}`}
-      onMouseDown={() => {
-        oscillator.triggerAttack(note);
-      }}
-      onMouseUp={() => {
-        oscillator.releaseAll();
-      }}
-    />
-  );
-}
-
-export function SharpNote({ note, duration, oscillator }) {
-  const [triggered, setTriggered] = useState(false);
-  useEffect(() => {
-    document.addEventListener(
-      "keydown",
-      event => {
-        if (triggered === false) {
-          if (event.keyCode === keyTable[note]) {
-            setTriggered(true);
-          }
-        }
-      },
-      false
-    );
-    document.addEventListener("keyup", event => {
-      if (event.keyCode === keyTable[note]) {
-        setTriggered(false);
-      }
-    });
-  }, []);
-
-  if (triggered) {
-    oscillator.triggerAttack(note);
-  } else if (triggered === false) {
-    oscillator.triggerRelease(note);
-  }
-
-  return (
-    <div
-      className={`synth__sharp__note ${(() => {
-        if (
-          note === "D#3" ||
-          note === "A#3" ||
-          note === "D#4" ||
-          note === "A#4"
-        ) {
-          return "synth__sharp__note--separator";
-        }
-        return "";
-      })()} ${(() => {
-        if (triggered) {
-          return "synth__note--triggered";
-        }
-        return "";
-      })()}`}
-      onMouseDown={() => {
-        oscillator.triggerAttackRelease(note, duration);
-      }}
-      onMouseUp={() => {
-        oscillator.releaseAll();
-      }}
-    />
   );
 }
