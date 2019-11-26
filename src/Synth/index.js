@@ -4,7 +4,10 @@ import styles from "./index.module.scss";
 import NaturalNote from "./components/NaturalNote";
 import SharpNote from "./components/SharpNote";
 
-export default function Synth({ duration }) {
+export default function Synth({ reverb, chorus, volume }) {
+
+  const defaultDuration = 1;
+
   const [naturalNotes, setNaturalNotes] = useState([
     "C3",
     "D3",
@@ -44,6 +47,15 @@ export default function Synth({ duration }) {
     }).toMaster()
   );
 
+    const [reverbTone, setReverbTone] = useState(new Tone.Reverb({
+      decay: reverb
+    }).toMaster())
+    reverbTone.generate().then(() => {
+    })
+
+  
+    
+
   return (
     <div className={styles.synth}>
       <div className={styles.synthNaturalNotes}>
@@ -51,7 +63,7 @@ export default function Synth({ duration }) {
           return (
             <NaturalNote
               note={note}
-              duration={duration}
+              duration={defaultDuration}
               oscillator={oscillator}
             />
           );
@@ -61,7 +73,7 @@ export default function Synth({ duration }) {
             return (  
               <SharpNote
                 note={note}
-                duration={duration}
+                duration={defaultDuration}
                 oscillator={oscillator}
               />
             );

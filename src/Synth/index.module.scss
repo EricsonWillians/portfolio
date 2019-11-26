@@ -1,7 +1,7 @@
 .synth {
   width: 1256px;
   height: 384px;
-  background:#C0C0C0;
+  background: #c0c0c0;
   padding: 16px;
 }
 
@@ -13,5 +13,6 @@
 
 .synthSharpNotes {
   position: absolute;
-  margin-left: -58px;
+  left: -3px;
+  width: 100%;
 }

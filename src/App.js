@@ -11,7 +11,9 @@ const ResetStyles = createGlobalStyle`
 `;
 
 export default function App() {
-  const [duration, setDuration] = useState(0);
+  const [reverb, setReverb] = useState(0);
+  const [chorus, setChorus] = useState(0);
+  const [volume, setVolume] = useState(1);
 
   return (
     <ThemeProvider theme={themes.default}>
@@ -29,19 +31,19 @@ export default function App() {
             <KnobWrapper
               title="Reverb"
               onChange={value => {
-                setDuration(value);
+                setReverb(value);
               }}
             />
             <KnobWrapper
               title="Chorus"
               onChange={value => {
-                setDuration(value);
+                setChorus(value);
               }}
             />
             <KnobWrapper
               title="Volume"
               onChange={value => {
-                setDuration(value);
+                setVolume(value);
               }}
             />
           </Cutout>
@@ -57,7 +59,7 @@ export default function App() {
       </AppBar>
       <div className={styles.main}>
         <Cutout style={{ width: "auto", marginTop: 128 }}>
-          <Synth duration={duration} />
+          <Synth reverb={reverb} chorus={chorus} volume={volume} />
         </Cutout>
       </div>
     </ThemeProvider>
