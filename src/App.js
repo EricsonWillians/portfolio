@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { reset, AppBar, Toolbar, Avatar, Cutout, Menu, themes } from "react95";
 import Synth from "./Synth";
-import KnobWrapper from "./Synth/components/KnobWrapper";
+import InputWrapper from "./Synth/components/InputWrapper";
 import avatar from "./assets/img/avatar.jpg";
 
 const ResetStyles = createGlobalStyle`
@@ -21,26 +21,26 @@ export default function App() {
         <Toolbar style={{ justifyContent: "space-between" }}>
           <Cutout
             style={{
-              width: "256px",
+              width: "512px",
               height: "64px",
               display: "flex",
               justifyContent: "space-evenly",
               alignItems: "center"
             }}
           >
-            <KnobWrapper
+            <InputWrapper
               title="Reverb"
               onChange={value => {
                 setReverb(value);
               }}
             />
-            <KnobWrapper
+            <InputWrapper
               title="Chorus"
               onChange={value => {
                 setChorus(value);
               }}
             />
-            <KnobWrapper
+            <InputWrapper
               title="Volume"
               onChange={value => {
                 setVolume(value);
