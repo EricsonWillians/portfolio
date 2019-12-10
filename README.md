@@ -9,6 +9,7 @@
 
 * 16 notes polyphony
 * Simple square wave oscillator
+* Extremely simple integer-based reverb
 
 ## UI
 
