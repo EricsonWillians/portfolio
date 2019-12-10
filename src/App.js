@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./index.module.scss";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { reset, AppBar, Toolbar, Avatar, Cutout, Menu, themes } from "react95";
+import { reset, AppBar, Toolbar, Avatar, Cutout, themes } from "react95";
 import Synth from "./Synth";
 import InputWrapper from "./Synth/components/InputWrapper";
 import avatar from "./assets/img/avatar.jpg";
@@ -11,8 +11,8 @@ const ResetStyles = createGlobalStyle`
 `;
 
 export default function App() {
-  const [reverb, setReverb] = useState(0);
-  const [chorus, setChorus] = useState(0);
+  const [decay, setDecay] = useState(0);
+  const [preDelay, setPreDelay] = useState(1);
   const [volume, setVolume] = useState(1);
 
   return (
@@ -21,7 +21,7 @@ export default function App() {
         <Toolbar style={{ justifyContent: "space-between" }}>
           <Cutout
             style={{
-              width: "512px",
+              width: "384px",
               height: "64px",
               display: "flex",
               justifyContent: "space-evenly",
@@ -29,21 +29,17 @@ export default function App() {
             }}
           >
             <InputWrapper
-              title="Reverb"
+              title="Decay"
+              defaultValue={decay}
               onChange={value => {
-                setReverb(value);
+                setDecay(value);
               }}
             />
             <InputWrapper
-              title="Chorus"
+              title="Pre Delay"
+              defaultValue={preDelay}
               onChange={value => {
-                setChorus(value);
-              }}
-            />
-            <InputWrapper
-              title="Volume"
-              onChange={value => {
-                setVolume(value);
+                setPreDelay(value);
               }}
             />
           </Cutout>
@@ -59,7 +55,7 @@ export default function App() {
       </AppBar>
       <div className={styles.main}>
         <Cutout style={{ width: "auto", marginTop: 128 }}>
-          <Synth reverb={reverb} chorus={chorus} volume={volume} />
+          <Synth decay={decay} preDelay={preDelay} volume={volume} />
         </Cutout>
       </div>
     </ThemeProvider>
