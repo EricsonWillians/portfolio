@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import styles from "./index.module.scss";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { reset, AppBar, Toolbar, Avatar, Cutout, themes } from "react95";
-import Synth from "./Synth";
-import InputWrapper from "./Synth/components/InputWrapper";
+import Synth from "./synth";
+import InputWrapper from "./synth/components/input-wrapper";
 import avatar from "./assets/img/avatar.jpg";
 
 const ResetStyles = createGlobalStyle`
@@ -25,20 +25,20 @@ export default function App() {
               height: "64px",
               display: "flex",
               justifyContent: "space-evenly",
-              alignItems: "center"
+              alignItems: "center",
             }}
           >
             <InputWrapper
               title="Decay"
               defaultValue={decay}
-              onChange={value => {
+              onChange={(value) => {
                 setDecay(value);
               }}
             />
             <InputWrapper
               title="Pre Delay"
               defaultValue={preDelay}
-              onChange={value => {
+              onChange={(value) => {
                 setPreDelay(value);
               }}
             />
@@ -47,7 +47,7 @@ export default function App() {
             style={{
               width: 64,
               height: 64,
-              marginRight: 6
+              marginRight: 6,
             }}
             src={avatar}
           />

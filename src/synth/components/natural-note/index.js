@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "./index.module.scss";
 import { Cutout } from "react95";
-import { keyTable } from "./../../keyTable";
+import { keyTable } from "../../key-table";
 
 export default function NaturalNote({ note, duration, oscillator }) {
   const [triggered, setTriggered] = useState(false);
   useEffect(() => {
     document.addEventListener(
       "keydown",
-      event => {
+      (event) => {
         if (triggered === false) {
           if (event.keyCode === keyTable[note]) {
             setTriggered(true);
@@ -17,7 +17,7 @@ export default function NaturalNote({ note, duration, oscillator }) {
       },
       false
     );
-    document.addEventListener("keyup", event => {
+    document.addEventListener("keyup", (event) => {
       if (event.keyCode === keyTable[note]) {
         setTriggered(false);
       }

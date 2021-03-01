@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Tone from "tone";
 import styles from "./index.module.scss";
-import NaturalNote from "./components/NaturalNote";
-import SharpNote from "./components/SharpNote";
+import NaturalNote from "./components/natural-note";
+import SharpNote from "./components/sharp-note";
 
 export default function Synth({ decay, preDelay, volume }) {
   const defaultDuration = 1;
@@ -22,7 +22,7 @@ export default function Synth({ decay, preDelay, volume }) {
     "G4",
     "A4",
     "B4",
-    "C5"
+    "C5",
   ]);
 
   const [sharpNotes, setSharpNotes] = useState([
@@ -35,48 +35,52 @@ export default function Synth({ decay, preDelay, volume }) {
     "D#4",
     "F#4",
     "G#4",
-    "A#4"
+    "A#4",
   ]);
 
   const [oscillator, setOscillator] = useState(
     new Tone.PolySynth(16, Tone.Synth, {
       oscillator: {
-        type: "square"
-      }
+        type: "square",
+      },
     }).toMaster()
   );
 
   const [reverbTone, setReverbTone] = useState(
     new Tone.Reverb({
       decay: decay,
-      preDelay: preDelay
+      preDelay: preDelay,
     }).toMaster()
   );
-  
-  useEffect(() => {
-    setReverbTone(new Tone.Reverb({
-      decay: decay,
-      preDelay: preDelay
-    }).toMaster())
-  }, [decay])
 
   useEffect(() => {
-    setReverbTone(new Tone.Reverb({
-      decay: decay,
-      preDelay: preDelay
-    }).toMaster())
-  }, [preDelay])
+    setReverbTone(
+      new Tone.Reverb({
+        decay: decay,
+        preDelay: preDelay,
+      }).toMaster()
+    );
+  }, [decay]);
+
+  useEffect(() => {
+    setReverbTone(
+      new Tone.Reverb({
+        decay: decay,
+        preDelay: preDelay,
+      }).toMaster()
+    );
+  }, [preDelay]);
 
   useEffect(() => {
     reverbTone.generate().then((effect) => {
       oscillator.connect(effect);
     });
-  }, [reverbTone])
+  }, [reverbTone]);
 
   return (
     <div className={styles.synth}>
       <div className={styles.synthNaturalNotes}>
-        {naturalNotes.map(note => {
+        {naturalNotes.map((note) => {
           return (
             <NaturalNote
               note={note}
@@ -86,7 +90,7 @@ export default function Synth({ decay, preDelay, volume }) {
           );
         })}
         <div className={styles.synthSharpNotes}>
-          {sharpNotes.map(note => {
+          {sharpNotes.map((note) => {
             return (
               <SharpNote
                 note={note}
